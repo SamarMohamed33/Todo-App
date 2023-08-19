@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { green } from "@mui/material/colors";
+import "./App.css";
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#43484e",
+    },
+    secondary: {
+      main: green[700],
+    },
+    notActive: {
+      main: "#43484e",
+    },
+  },
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider className="App" theme={theme}>
+      <div className="container">
+        <header className="text-center m-4">
+          <h1>Todos</h1>
+        </header>
+        <AddTodo />
+        <Todos />
+      </div>
+    </ThemeProvider>
   );
 }
 
